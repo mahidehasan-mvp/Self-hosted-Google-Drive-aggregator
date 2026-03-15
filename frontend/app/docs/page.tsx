@@ -213,8 +213,8 @@ export default function DocsPage() {
                   Fork the repository on GitHub to get your own copy, then clone it locally.
                 </p>
                 <Block label="Terminal">
-{`git clone https://github.com/saimon4u/Drive-Pool.git
-cd Drive-Pool`}
+{`git clone https://github.com/mahidehasan-mvp/Self-hosted-Google-Drive-aggregator.git
+cd Self-hosted-Google-Drive-aggregator`}
                 </Block>
               </div>
             </section>
@@ -284,8 +284,8 @@ cd Drive-Pool`}
                     ))}
                   </ul>
                 </div>
-                <Note type="info">
-                  All three secrets are stored in the <Code>app_config</Code> table inside <Code>backend/drivepool.db</Code>. Re-run the script at any time to change your PIN — it will ask before overwriting.
+                <Note type="warn">
+                  Only run this script <strong>once</strong>. Running it again will rotate your encryption key, which will permanently break access to any already-connected Google accounts. To change your PIN later, use <Code>python backend/scripts/change_pin.py</Code> instead — it updates only the PIN hash and leaves all other secrets untouched.
                 </Note>
               </div>
             </section>
@@ -297,8 +297,9 @@ cd Drive-Pool`}
                 <p className="text-sm leading-relaxed text-dp-text2">
                   The backend is a FastAPI app served by Uvicorn. On startup it creates the database tables, runs migrations, and syncs file metadata from all connected Drive accounts.
                 </p>
-                <Block label="From the project root">
-{`uvicorn backend.main:app --reload --port 8000`}
+                <Block label="From inside the backend/ directory">
+{`cd backend
+uvicorn main:app --reload`}
                 </Block>
                 <Note type="tip">
                   Verify it works by opening <span className="font-mono text-orange-400">http://localhost:8000/docs</span> — you should see the Swagger UI with all API routes.
@@ -520,7 +521,7 @@ npm run dev`}
               </div>
               <p className="mt-8 text-center text-xs text-dp-text3">
                 DrivePool is free and open source.{" "}
-                <a href="https://github.com/saimon4u/Drive-Pool" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline">View on GitHub.</a>
+                <a href="https://github.com/mahidehasan-mvp/Self-hosted-Google-Drive-aggregator" target="_blank" rel="noopener noreferrer" className="text-orange-400 hover:underline">View on GitHub.</a>
               </p>
             </section>
 
