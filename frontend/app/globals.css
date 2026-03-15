@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base Theme (Minimal Orange Fallback) ─────── */
+:root {
+  /* Brand Palette */
+  --brand-dark: 13 17 23;      /* #0d1117 */
+  --brand-accent: 249 115 22;  /* #f97316 */
+  --brand-surface: 22 27 34;   /* #161b22 */
+  --brand-border: 48 54 61;    /* #30363d */
+  --brand-gray: 139 148 158;   /* #8b949e */
+
+  /* Extras for specialized themes */
+  --brand-electric: 249 115 22;
+  --brand-purple: 249 115 22;
+  
+  /* Legacy Dashboard Mapping */
+  --dp-bg: var(--brand-dark);
+  --dp-s1: var(--brand-surface);
+  --dp-s2: 33 38 45;           /* #21262d */
+  --dp-border: var(--brand-border);
+  --dp-hover: 31 36 44;        /* #1f242c */
+  --dp-text: 201 209 217;      /* #c9d1d9 */
+  --dp-text2: var(--brand-gray);
+  --dp-text3: 110 118 129;     /* #6e7681 */
+  --dp-sidebar: var(--brand-dark);
+
+  /* Element FX */
+  --grid-color: rgba(48, 54, 61, 0.4);
+  --gradient-stop-1: rgb(255 255 255);
+  --gradient-stop-2: rgb(var(--brand-gray));
+}
+
+/* ── Cyberpunk Variant ────────────────────────── */
+[data-theme="cyberpunk"] {
+  --brand-dark: 10 10 20;      /* #0a0a14 */
+  --brand-accent: 255 0 255;   /* #ff00ff */
+  --brand-electric: 0 240 255; /* #00f0ff */
+  --brand-purple: 112 0 255;   /* #7000ff */
+  --brand-surface: 18 18 37;   /* #121225 */
+  --brand-border: 45 45 80;    /* #2d2d50 */
+  --brand-gray: 148 163 184;   /* #94a3b8 */
+
+  --dp-bg: var(--brand-dark);
+  --dp-s1: var(--brand-surface);
+  --dp-s2: 26 26 53;           /* #1a1a35 */
+  --dp-border: var(--brand-border);
+  --dp-hover: 30 30 63;        /* #1e1e3f */
+  --dp-text: 226 232 240;      /* #e2e8f0 */
+  --dp-text2: var(--brand-gray);
+  --dp-text3: 100 116 139;     /* #64748b */
+  --dp-sidebar: var(--brand-dark);
+
+  --grid-color: rgba(112, 0, 255, 0.15);
+  --gradient-stop-1: rgb(var(--brand-electric));
+  --gradient-stop-2: rgb(var(--brand-accent));
+}
+
+/* ── Emerald Variant ──────────────────────────── */
+[data-theme="emerald"] {
+  --brand-dark: 6 26 20;       /* #061a14 */
+  --brand-accent: 16 185 129;  /* #10b981 */
+  --brand-surface: 10 38 30;   /* #0a261e */
+  --brand-border: 19 78 74;    /* #134e4a */
+  --brand-gray: 148 163 184;   /* #94a3b8 */
+
+  --brand-electric: 16 185 129;
+  --brand-purple: 16 185 129;
+
+  --dp-bg: var(--brand-dark);
+  --dp-s1: var(--brand-surface);
+  --dp-s2: 13 51 38;           /* #0d3326 */
+  --dp-border: var(--brand-border);
+  --dp-hover: 15 61 46;        /* #0f3d2e */
+  --dp-text: 236 253 245;      /* #ecfdf5 */
+  --dp-text2: var(--brand-gray);
+  --dp-text3: 100 116 139;     /* #64748b */
+  --dp-sidebar: var(--brand-dark);
+
+  --grid-color: rgba(16, 185, 129, 0.1);
+  --gradient-stop-1: rgb(255 255 255);
+  --gradient-stop-2: rgb(167 243 208); /* #a7f3d0 */
+}
+
+/* ── Light theme ─────────────────────────────────────────── */
+:root.light {
+  --dp-bg: #f8f9ff;
+  --dp-s1: #ffffff;
+  --dp-s2: #eef1ff;
+  --dp-border: #dde3f0;
+  --dp-hover: #f2f5ff;
+  --dp-text: #0d1630;
+  --dp-text2: #4a5f82;
+  --dp-text3: #8a9aba;
+  --dp-sidebar: #ffffff;
+}
+
+body {
+  background-color: var(--dp-bg);
+  color: var(--dp-text);
+}
+
+/* ── Scrollbar ───────────────────────────────────────────── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--dp-border) transparent;
+}
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background-color: var(--dp-border);
+  border-radius: 3px;
+}
+
+/* ── Landing page animations ─────────────────────────────── */
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+.gradient-text {
+  background: linear-gradient(to right, var(--gradient-stop-1), var(--gradient-stop-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.grid-bg {
+  background-image: radial-gradient(circle at 2px 2px, var(--grid-color) 1px, transparent 0);
+  background-size: 40px 40px;
+}
